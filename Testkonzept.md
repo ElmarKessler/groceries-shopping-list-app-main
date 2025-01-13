@@ -8,6 +8,7 @@ Eine plattformübergreifende Anwendung zum erstellen von Einkaufslisten, die ein
 #### Documents
 - ShoppingListsStore.tsx
 - ShoppingListStore.tsx
+- ListCreationContext.tsx
 - index.d.ts
 
 #### Functions
@@ -26,4 +27,6 @@ Eine plattformübergreifende Anwendung zum erstellen von Einkaufslisten, die ein
 - useShoppingListProductCreatedByNickname()
 - useShoppingListUserNicknames()
 - ( ShoppingListStore() )
-- 
+
+- ListCreationProvider()
+- useListCreation()
