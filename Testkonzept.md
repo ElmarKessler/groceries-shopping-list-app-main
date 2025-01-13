@@ -6,9 +6,9 @@ Eine plattformübergreifende Anwendung zum erstellen von Einkaufslisten, die ein
 
 ### Test Items
 #### Documents
--ShoppingListsStore.tsx
--ShoppingListStore.tsx
--index.d.ts
+- ShoppingListsStore.tsx
+- ShoppingListStore.tsx
+- index.d.ts
 
 #### Functions
 - useAddShoppingListCallback()
