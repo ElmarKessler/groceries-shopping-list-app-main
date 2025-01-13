@@ -81,7 +81,7 @@ export default function ShoppingListsStore() {
   const store = useCreateMergeableStore(() =>
     createMergeableStore().setTablesSchema(TABLES_SCHEMA)
   );
-  useCreateClientPersisterAndStart(storeId, store);
+  useCreateClientPersisterAndStart(storeId, store)`;
   useCreateServerSynchronizerAndStart(storeId, store);
   useProvideStore(storeId, store);
 
