@@ -11,12 +11,42 @@ import {
   default as ShoppingListStore,
 } from './ShoppingListStore';
 
-import { Store } from 'tinybase';
-import { createStore, setSchema } from 'tinybase';
+import { OptionalSchemas, Store, createStore } from 'tinybase';
 import { createRelationships } from 'tinybase/with-schemas';
+ const TABLES_SCHEMA = {
+  products: {
+    id: { type: 'string', primary: true },
+    name: { type: 'string' },
+    quantity: { type: 'number' },
+    units: { type: 'string' },
+    notes: { type: 'string' },
+    createdBy: { type: 'string' },
+    createdAt: { type: 'string' },
+  },
+  collaborators: {
+    id: { type: 'string', primary: true },
+    nickname: { type: 'string' },
+  },
+} as const;
 
-const mockStore = createStore().setSchema(TABLES_SCHEMA, VALUES_SCHEMA);
-const mockRelationships = createRelationships(mockStore);
+const VALUES_SCHEMA = {
+  products: {
+    id: '',
+    name: '',
+    quantity: 0,
+    units: '',
+    notes: '',
+    createdBy: '',
+    createdAt: '',
+  },
+  collaborators: {
+    id: '',
+    nickname: '',
+  },
+};
+
+const mockStore: Store = createStore().setSchema(TABLES_SCHEMA);
+
 const listId = 'testListId';
 const productId = 'testProductId';
 const userId = 'testUserId';
@@ -52,7 +82,7 @@ describe('ShoppingListStore Hooks', () => {
   test('useDelShoppingListProductCallback', () => {
     mockStore.setRow('products', productId, {
       id: productId,
-      name: 'Bananas',
+      name: 'Apples',
     });
 
     const { result } = renderHook(() =>
@@ -133,11 +163,10 @@ describe('ShoppingListStore Component', () => {
       })
     );
   
-    // Verify that the schema is applied by checking for tables
     expect(mockStore.hasTable('products')).toBe(true);
     expect(mockStore.hasTable('collaborators')).toBe(true);
-  
-// Verify relationship behavior by adding data and checking its effects
-mockStore.setRow('products', 'testProductId', { createdBy: userId });
-expect(mockStore.getCell('collaborators', userId, 'nickname')).toBe(nickname);
+
+    mockStore.setRow('products', 'testProductId', { createdBy: userId });
+    expect(mockStore.getCell('collaborators', userId, 'nickname')).toBe(nickname);
+  });
 });
