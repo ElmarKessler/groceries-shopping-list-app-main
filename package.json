@@ -11,5 +11,10 @@
   "devDependencies": {
     "@testing-library/react-hooks": "^8.0.1",
     "jest": "^29.7.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "./setupTests.js"
+    ]
   }
 }

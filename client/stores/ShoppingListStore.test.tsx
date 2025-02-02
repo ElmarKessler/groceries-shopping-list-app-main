@@ -11,8 +11,7 @@ import {
   default as ShoppingListStore,
 } from './ShoppingListStore';
 
-import { OptionalSchemas, Store, createStore } from 'tinybase';
-import { createRelationships } from 'tinybase/with-schemas';
+import { Store, createStore } from 'tinybase';
  const TABLES_SCHEMA = {
   products: {
     id: { type: 'string', primary: true },

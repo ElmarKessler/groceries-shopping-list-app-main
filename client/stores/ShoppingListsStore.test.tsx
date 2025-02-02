@@ -1,8 +1,3 @@
-import { TextEncoder, TextDecoder } from 'util'; // Polyfill for Node.js environments
-
-global.TextEncoder = TextEncoder;
-global.TextDecoder = TextDecoder;
-
 import { renderHook, act } from '@testing-library/react';
 import {
   useAddShoppingListCallback,
