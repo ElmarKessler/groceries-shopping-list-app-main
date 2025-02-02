@@ -1,0 +1,15 @@
+{
+  "name": "groceries-shopping-list-app-main",
+  "version": "1.0.0",
+  "description": "A cross-platform shopping list application built with modern technologies that enables real-time synchronization while maintaining local-first functionality.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/react-hooks": "^8.0.1",
+    "jest": "^29.7.0"
+  }
+}

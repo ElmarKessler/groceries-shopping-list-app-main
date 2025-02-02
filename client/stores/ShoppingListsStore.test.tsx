@@ -1,3 +1,8 @@
+import { TextEncoder, TextDecoder } from 'util'; // Polyfill for Node.js environments
+
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
 import { renderHook, act } from '@testing-library/react';
 import {
   useAddShoppingListCallback,
@@ -7,7 +12,6 @@ import {
   default as ShoppingListsStore,
 } from './ShoppingListsStore';
 import { createStore, Store } from 'tinybase';
-import { createMergeableStore } from 'tinybase/with-schemas';
 
 const TABLES_SCHEMA = {
   lists: {

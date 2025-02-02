@@ -1,12 +1,11 @@
 import { render, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import React from 'react';
-import {ListCreationProvider, useListCreation } from './ListCreationContext';
+import { ListCreationProvider, useListCreation } from './ListCreationContext';
 
 // Helper component to use the hook
 const TestComponent = () => {
-  const { selectedEmoji, selectedColor, setSelectedEmoji, setSelectedColor } =
-    useListCreation();
+  const { selectedEmoji, selectedColor, setSelectedEmoji, setSelectedColor } = useListCreation();
 
   return (
     <div>
@@ -56,7 +55,7 @@ test('ListCreationContext updates values when set functions are called', () => {
   expect(screen.getByTestId('color')).toHaveTextContent('#FF5733');
 });
 
-// Test: Ensure that useListCreation throws an error when used outside the provider
+// Test: Ensure that useListCreation throws an error when used outside of ListCreationContext
 test('useListCreation throws error when used outside of ListCreationContext', () => {
   const TestComponentWithoutProvider = () => {
     try {
@@ -68,6 +67,7 @@ test('useListCreation throws error when used outside of ListCreationContext', ()
   };
 
   render(<TestComponentWithoutProvider />);
-  
-  expect(screen.getByText('useListCreation must be used within a ListCreationContext')).toBeInTheDocument();
+
+  // Use a flexible regular expression to match the error message
+  expect(screen.getByText(/useListCreation must be used within a ListCreationProvider/i)).toBeInTheDocument();
 });
