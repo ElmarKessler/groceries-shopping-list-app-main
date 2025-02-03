@@ -29,8 +29,6 @@ beforeEach(() => {
     id: listId,
     initialContentJson: JSON.stringify([{}, { id: listId, name: listName, description: listDescription, emoji: listEmoji, color: listColor }]),
   });
-});
-
 describe('ShoppingListsStore Hooks', () => {
   test('useAddShoppingListCallback', () => {
     const { result } = renderHook(() => useAddShoppingListCallback());
@@ -61,6 +59,7 @@ describe('ShoppingListsStore Hooks', () => {
       );
     });
   });
+});
 
 describe('ShoppingListsStore Component', () => {
   test('initializes store with schema', () => {
@@ -69,4 +68,3 @@ describe('ShoppingListsStore Component', () => {
     expect(mockStore.hasTable('lists')).toBe(true);
   });
 });
-
