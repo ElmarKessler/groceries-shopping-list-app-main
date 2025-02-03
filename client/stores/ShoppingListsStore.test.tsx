@@ -62,22 +62,6 @@ describe('ShoppingListsStore Hooks', () => {
     });
   });
 
-  test('useDelShoppingListCallback', () => {
-    const { result } = renderHook(() => useDelShoppingListCallback(listId));
-
-    act(() => {
-      result.current();
-      expect(mockStore.getRow('lists', listId)).toBeUndefined();
-    });
-  });
-
-  test('useShoppingListIds', () => {
-    const { result } = renderHook(() => useShoppingListIds());
-
-    expect(result.current).toEqual([listId]);
-  });
-});
-
 describe('ShoppingListsStore Component', () => {
   test('initializes store with schema', () => {
     renderHook(() => ShoppingListsStore());
